@@ -1,5 +1,4 @@
 # app/services/lead_service.py
-from typing import Optional
 
 from tortoise.exceptions import DoesNotExist
 
