@@ -53,6 +53,14 @@ async def update_stage_endpoint(lead_id: int, payload: LeadUpdateStage) -> LeadO
             status_code=400,
             detail=f"Invalid stage transition from '{exc.current}' to '{exc.new}'",
         )
+    except lead_service.CannotTransferToSalesError:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Lead does not satisfy conditions for transfer to sales: "
+                "AI score must be >= 0.6 and business_domain must be set"
+            ),
+        )
 
     return lead_to_schema(lead)
 
