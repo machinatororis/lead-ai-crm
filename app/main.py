@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 
+from app.api.leads import router as leads_router  # ← новый импорт
+
 app = FastAPI(title="Lead AI CRM")
+
+app.include_router(leads_router)  # ← подключаем роутер
 
 
 @app.get("/health")

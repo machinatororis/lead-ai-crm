@@ -4,3 +4,4 @@ tortoise-orm
 asyncpg
 pydantic
 python-dotenv
+tzdata
