@@ -295,3 +295,15 @@ The main engineering goals were:
 - modeling domain constraints
 - validating stage transitions
 - using AI in a controlled, product-oriented way
+
+## Tests
+
+The project includes:
+- unit tests for lead stage transition rules and sales handoff validation
+- async tests for database-backed service operations
+- tests for AI scoring behavior
+
+Run tests with:
+
+```bash
+pytest

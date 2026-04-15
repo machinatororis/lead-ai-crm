@@ -5,3 +5,6 @@ asyncpg
 pydantic
 python-dotenv
 tzdata
+pytest
+pytest-asyncio
+aiosqlite

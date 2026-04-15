@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 
 from app.api.leads import router as leads_router
 
-# Подгружаем переменные окружения из .env (если файл есть)
 load_dotenv()
 
 app = FastAPI(title="Lead AI CRM")
@@ -19,12 +18,12 @@ async def health():
     return {"status": "ok"}
 
 
-# Берём строку подключения из переменной окружения
-DB_URL = os.getenv(
-    "DB_URL",
-    # дефолт - на случай локального запуска без .env или без docker-compose
-    "postgres://postgres:postgres@localhost:5432/lead_ai_crm",
-)
+DB_URL = os.getenv("DB_URL")
+if not DB_URL:
+    raise RuntimeError(
+        "DB_URL environment variable is not set. Create a .env file or provide DB_URL in the environment."
+    )
+
 
 register_tortoise(
     app,
